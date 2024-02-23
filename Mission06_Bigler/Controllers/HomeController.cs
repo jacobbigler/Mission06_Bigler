@@ -8,9 +8,9 @@ namespace Mission06_Bigler.Controllers
     public class HomeController : Controller
     {
 
-        private ContributeContext _context;
+        private MoviesContext _context;
 
-        public HomeController(ContributeContext temp) //Constructor 
+        public HomeController(MoviesContext temp) //Constructor 
         {
             _context = temp;
         }
@@ -25,19 +25,11 @@ namespace Mission06_Bigler.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Contribute()
+        public IActionResult MovieList() 
         {
-            return View();
-        }
+            var movies = _context.Movies.ToList();
 
-        [HttpPost]
-        public IActionResult Contribute(Contribution response)
-        {
-            _context.Contributions.Add(response);
-            _context.SaveChanges();
-
-            return View("Success", response);
+            return View(movies);
         }
 
     }
