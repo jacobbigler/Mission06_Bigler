@@ -16,6 +16,7 @@ namespace Mission06_Bigler.Models
         [Required(ErrorMessage = "Title is required")]
         public string Title { get; set; }
 
+        [Range(1888, 2024)]
         [Required(ErrorMessage = "Year is required")]
         public int Year { get; set; }
 
